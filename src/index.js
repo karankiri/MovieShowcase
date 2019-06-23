@@ -21,7 +21,7 @@ class App {
             tabContainers: ["movieShowcase","searchResults"],
             buttonIds: ["movieShowcaseButton","searchTabButton"]
         };
-        this.ApiURL = "http://www.omdbapi.com/?apikey=45048e3e&type=movie&s=";
+        this.ApiURL = "https://www.omdbapi.com/?apikey=45048e3e&type=movie&s=";
         this.bindEvents();
     }
 
@@ -47,12 +47,24 @@ class App {
         fetch(url)
         .then(response => response.json())
         .then(data => {
-            this.currentMovies = data.Search;
+            this.currentMovies = data.Search || [];
             this.showMovie();
         })
     }
+
+    showNoResults() {
+        var template = document.getElementById("template-movie-not-found");
+        // Get the contents of the template
+        var templateHtml = template.innerHTML;
+        
+        document.getElementById(this.state.tabContainers[this.state.currrentTab]).innerHTML = templateHtml;
+    }
     
     showMovie() {
+        if(this.currentMovies.length === 0) {
+            this.showNoResults();
+            return;
+        }
         // Cache of the template
         var template = document.getElementById("template-movie-item");
         // Get the contents of the template

@@ -10,7 +10,7 @@
         <div class="topRow">
           <div class="buttonContainer">
             <button class="tabSwtich appButton" id="movieShowcaseButton">My Movie Library</button>
-            <button class="tabSwtich appButton" id="searchTabButton">Search and Add new movies</button>
+            <button class="tabSwtich appButton" id="searchTabButton">Search new movies</button>
 
             <select name="filter" class="appButton" id="filter">
                 <option value="0">Filter</option>
@@ -19,7 +19,7 @@
               </select>
           </div>
           <div class="searchContainer">
-              <input type="text" name="Search">
+              <input type="text" name="Search" placeholder="Enter search term here">
           </div>
         </div>
       </header>
@@ -32,7 +32,19 @@
         </div>
       </main>
       <footer>
-        
+        <div class="copyRightContainer">
+          <div><span>PRIVACY POLICY</span> |  <span>TERMS & CONDITIONS</span></div>
+          <div>2019 &copy; Lorem ipsum. All rights reserved</div>
+        </div>
+        <div class="socialMediaLinks">
+            <div>Follow us on social media</div>
+            <div>
+              <div>
+                  <a href="https://www.facebook.com" target="_blank"><img src="https://img.icons8.com/color/48/000000/facebook-circled.png"></a>
+                  <a href="https://www.twitter.com" target="_blank"><img src="https://img.icons8.com/color/48/000000/twitter-circled.png"></a>
+                  <a href="https://www.linkedin.com" target="_blank"><img src="https://img.icons8.com/color/48/000000/linkedin-circled.png"></a>
+            </div>
+        </div>
       </footer>
     </div>
     <script id="template-movie-item" type="text/template">
@@ -44,6 +56,11 @@
           <div class="titleText">{{Title}}</div>
           <div class="yearText">{{Year}}</div>
         </div>
+      </div>
+    </script>
+    <script id="template-movie-not-found" type="text/template">
+      <div class="noResults">
+        <span>No movies found</span>
       </div>
     </script>
   </body>
