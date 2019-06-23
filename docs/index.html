@@ -1,9 +1,50 @@
 <html>
   <head>
     <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="main.js"></script>
   </head>
   <body>
-    <div>Hello, world!</div>
-    <script src="main.js"></script>
+    <div class="container">
+      <header>
+        <div class="header"></div>
+        <div class="topRow">
+          <div class="buttonContainer">
+            <button class="tabSwtich appButton" id="movieShowcaseButton">My Movie Library</button>
+            <button class="tabSwtich appButton" id="searchTabButton">Search and Add new movies</button>
+
+            <select name="filter" class="appButton" id="filter">
+                <option value="0">Filter</option>
+                <option value="1">Title</option>
+                <option value="2">Year</option>
+              </select>
+          </div>
+          <div class="searchContainer">
+              <input type="text" name="Search">
+          </div>
+        </div>
+      </header>
+      <main>
+        <div id="searchResults">
+
+        </div>
+        <div id="movieShowcase">
+
+        </div>
+      </main>
+      <footer>
+        
+      </footer>
+    </div>
+    <script id="template-movie-item" type="text/template">
+      <div class="movieContainer" data-id="{{imdbID}}">
+        <div class="posterContainer">
+          <img src="{{Poster}}" alt="{{Title}} Poster">
+        </div>
+        <div class="textContainer">
+          <div class="titleText">{{Title}}</div>
+          <div class="yearText">{{Year}}</div>
+        </div>
+      </div>
+    </script>
   </body>
 </html>
