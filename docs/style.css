@@ -8,7 +8,8 @@
       .container select {
         float: none;
         display: block; } }
-  .container div#movieShowcase, .container div#searchResults {
+  .container div#movieShowcase,
+  .container div#searchResults {
     text-align: center; }
   .container #searchResults {
     min-height: calc(100vh - 302px); }
@@ -72,24 +73,35 @@
       left: 50%;
       transform: translate(-50%, -50%); }
   .container .appButton {
-    background-color: #008CBA;
-    /* blue */
+    border-radius: 4px;
+    background-color: #0336FF;
     border: none;
-    color: white;
-    padding: 15px 32px;
+    color: #ffffff;
     text-align: center;
-    text-decoration: none;
-    display: inline-block;
     font-size: 16px;
-    margin: 4px 2px;
+    padding: 15px 32px;
+    transition: all 0.5s;
     cursor: pointer;
-    -webkit-transition-duration: 0.4s;
-    /* Safari */
-    transition-duration: 0.4s; }
-  .container .appButton:hover {
-    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19); }
+    margin: 5px; }
+  .container .appButton span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s; }
+  .container .appButton span:after {
+    content: "\00bb";
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s; }
+  .container .appButton:hover span {
+    padding-right: 25px; }
+  .container .appButton:hover span:after {
+    opacity: 1;
+    right: 0; }
   .container .appButton.disabled {
-    opacity: 0.6;
+    background-color: #0008ca;
     cursor: not-allowed;
     pointer-events: none; }
 
