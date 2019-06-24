@@ -38,12 +38,13 @@ class App {
         document.getElementsByTagName("select")[0].addEventListener('change', (event)=> {
             this.sortMovies(event.target.value);
         });
+        document.getElementById("loaderImg").src = data.loader;
     }
 
     searchMovie(val) {
-
+        this.loading(true);
         var url =  this.ApiURL + val;
-    
+
         fetch(url)
         .then(response => response.json())
         .then(data => {
@@ -56,10 +57,11 @@ class App {
         var template = document.getElementById("template-movie-not-found");
         // Get the contents of the template
         var templateHtml = template.innerHTML;
-        
+
         document.getElementById(this.state.tabContainers[this.state.currrentTab]).innerHTML = templateHtml;
+        this.loading(false);
     }
-    
+
     showMovie() {
         if(this.currentMovies.length === 0) {
             this.showNoResults();
@@ -71,10 +73,29 @@ class App {
         var templateHtml = template.innerHTML;
         // Final HTML variable as empty string
         var listHtml = "";
+        // sort the data array according to filter
+        this.sortMovieArray();
+
+        // Loop through movies, replace placeholder tags
+        // with actual data, and generate final HTML
+        this.currentMovies.map((movie)=>{
+            movie.Poster = movie.Poster === "N/A" ? defaultImgSrc : movie.Poster;
+            listHtml += templateHtml.replace(/{{imdbID}}/g, movie.imdbID)
+                                .replace(/{{Poster}}/g, movie.Poster)
+                                .replace(/{{Title}}/g, movie.Title)
+                                .replace(/{{Year}}/g, movie.Year);
+        });
+
+        // Replace the HTML of #container with final HTML
+        document.getElementById(this.state.tabContainers[this.state.currrentTab]).innerHTML = listHtml;
+        this.loading(false);
+    }
+
+    sortMovieArray() {
         if(this.state.filter !== 0) {
             this.currentMovies.sort((movie1, movie2) => {
                 var value1, value2;
-                if(this.state.filter===1) { 
+                if(this.state.filter===1) {
                     value1 = movie1.Title.toLowerCase();
                     value2 = movie2.Title.toLowerCase();
                 } else if(this.state.filter===2) {
@@ -90,23 +111,9 @@ class App {
         } else {
             this.shuffleArray(this.currentMovies);
         }
-        var data = this.currentMovies;
-        // Loop through dataObject, replace placeholder tags
-        // with actual data, and generate final HTML
-        for (var key in data) {
-            data[key]["Poster"] = data[key]["Poster"] === "N/A" ? defaultImgSrc : data[key]["Poster"];
-        listHtml += templateHtml.replace(/{{imdbID}}/g, data[key]["imdbID"])
-                                .replace(/{{Poster}}/g, data[key]["Poster"])
-                                .replace(/{{Title}}/g, data[key]["Title"])
-                                .replace(/{{Year}}/g, data[key]["Year"]);
-        }
-    
-        // Replace the HTML of #container with final HTML
-        document.getElementById(this.state.tabContainers[this.state.currrentTab]).innerHTML = listHtml;
-    
     }
-    
-    
+
+
     sortMovies(value) {
         console.log(value);
         if(value==="1") {
@@ -115,11 +122,11 @@ class App {
             this.state.filter = 2;
         } else {
             this.state.filter = 0;
-        }    
-        
+        }
+
         this.showMovie();
     }
-    
+
     switchTabs(tab) {
         this.state.currrentTab = tab;
         if(tab === 0) {
@@ -151,6 +158,15 @@ class App {
         for (let i = array.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
             [array[i], array[j]] = [array[j], array[i]];
+        }
+    }
+
+    loading(enable)  {
+        var loader = document.getElementById('loader');
+        if(enable) {
+            loader.style.display = "block";
+        } else {
+            loader.style.display = "none";
         }
     }
 }
