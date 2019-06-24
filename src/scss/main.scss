@@ -9,7 +9,7 @@ $color-primary-dark: #0008ca;
     select {
         float: right;
 
-        @media (max-width: 575px) {
+        @media (max-width: 601px) {
             & {
                 float: none;
                 display: block;
@@ -23,11 +23,17 @@ $color-primary-dark: #0008ca;
     }
 
     #searchResults {
-        min-height: calc(100vh - 302px);
+        min-height: calc(100% - 341px);
 
-        @media (max-width: 520px) {
+        @media (max-width: 601px) and (min-width: 428px) {
             & {
-                min-height: calc(100vh - 505px);
+                min-height: calc(100% - 411px);
+            }
+        }
+
+        @media (max-width: 428px) {
+            & {
+                min-height: calc(100% - 470px);
             }
         }
     }

@@ -4,7 +4,7 @@
   font-family: Georgia, serif; }
   .container select {
     float: right; }
-    @media (max-width: 575px) {
+    @media (max-width: 601px) {
       .container select {
         float: none;
         display: block; } }
@@ -12,10 +12,13 @@
   .container div#searchResults {
     text-align: center; }
   .container #searchResults {
-    min-height: calc(100vh - 302px); }
-    @media (max-width: 520px) {
+    min-height: calc(100% - 341px); }
+    @media (max-width: 601px) and (min-width: 428px) {
       .container #searchResults {
-        min-height: calc(100vh - 505px); } }
+        min-height: calc(100% - 411px); } }
+    @media (max-width: 428px) {
+      .container #searchResults {
+        min-height: calc(100% - 470px); } }
   .container .searchContainer {
     margin: 15px 0 55px; }
     .container .searchContainer input[type="text"] {
