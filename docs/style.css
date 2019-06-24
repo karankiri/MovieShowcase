@@ -7,8 +7,13 @@
       .container select {
         float: none;
         display: block; } }
+  .container div#movieShowcase, .container div#searchResults {
+    text-align: center; }
   .container #searchResults {
-    min-height: 420px; }
+    min-height: calc(100vh - 302px); }
+    @media (max-width: 520px) {
+      .container #searchResults {
+        min-height: calc(100vh - 505px); } }
   .container .searchContainer {
     margin: 15px 0 55px; }
     .container .searchContainer input[type="text"] {
@@ -24,10 +29,6 @@
     height: 280px;
     margin: 0 8px 20px 5px;
     display: inline-block; }
-    @media (max-width: 400px) {
-      .container .movieContainer {
-        margin: 10px auto;
-        display: block; } }
     .container .movieContainer .posterContainer {
       width: 100%;
       height: 90%; }
@@ -36,48 +37,45 @@
         height: 100%; }
     .container .movieContainer .titleText {
       float: left;
-      width: 80%; }
+      width: 80%;
+      text-align: left; }
     .container .movieContainer .yearText {
       float: right; }
   .container footer {
     border-top: 1px solid grey;
     margin-top: 25px;
-    padding-top: 30px; }
+    padding-top: 20px; }
     .container footer .copyRightContainer {
       float: left; }
       .container footer .copyRightContainer div {
         padding: 5px 0; }
     .container footer .socialMediaLinks {
       float: right;
-      text-align: right;
-      position: relative;
-      top: -8px;
+      text-align: center;
       margin-bottom: 11px; }
-      @media (max-width: 400px) {
+      @media (max-width: 520px) {
         .container footer .socialMediaLinks {
-          float: right; } }
-
-.appButton {
-  background-color: #008CBA;
-  /* blue */
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-  -webkit-transition-duration: 0.4s;
-  /* Safari */
-  transition-duration: 0.4s; }
-
-.appButton:hover {
-  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19); }
-
-.appButton.disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-  pointer-events: none; }
+          float: left;
+          padding-top: 15px; } }
+  .container .appButton {
+    background-color: #008CBA;
+    /* blue */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s;
+    /* Safari */
+    transition-duration: 0.4s; }
+  .container .appButton:hover {
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19); }
+  .container .appButton.disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    pointer-events: none; }
 
