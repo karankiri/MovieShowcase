@@ -38,10 +38,11 @@ class App {
         document.getElementsByTagName("select")[0].addEventListener('change', (event)=> {
             this.sortMovies(event.target.value);
         });
+        document.getElementById("loaderImg").src = data.loader;
     }
 
     searchMovie(val) {
-
+        this.loading(true);
         var url =  this.ApiURL + val;
     
         fetch(url)
@@ -58,6 +59,7 @@ class App {
         var templateHtml = template.innerHTML;
         
         document.getElementById(this.state.tabContainers[this.state.currrentTab]).innerHTML = templateHtml;
+        this.loading(false);
     }
     
     showMovie() {
@@ -103,7 +105,7 @@ class App {
     
         // Replace the HTML of #container with final HTML
         document.getElementById(this.state.tabContainers[this.state.currrentTab]).innerHTML = listHtml;
-    
+        this.loading(false);
     }
     
     
@@ -151,6 +153,15 @@ class App {
         for (let i = array.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
             [array[i], array[j]] = [array[j], array[i]];
+        }
+    }
+
+    loading(enable)  {
+        var loader = document.getElementById('loader');
+        if(enable) {
+            loader.style.display = "block";
+        } else {
+            loader.style.display = "none";
         }
     }
 }
