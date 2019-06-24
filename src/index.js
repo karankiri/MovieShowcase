@@ -87,6 +87,8 @@ class App {
                     return 1;
                     return 0;
             });
+        } else {
+            this.shuffleArray(this.currentMovies);
         }
         var data = this.currentMovies;
         // Loop through dataObject, replace placeholder tags
@@ -130,7 +132,7 @@ class App {
             var movieShowCaseButton = document.getElementById(this.state.buttonIds[1]);
             movieShowCaseButton.classList.remove("disabled");
             var input = document.getElementsByTagName("input");
-            input[0].style.visibility = "hidden";
+            input[0].style.display = "none";
         } else {
             var searchResultsTab = document.getElementById(this.state.tabContainers[1]);
             searchResultsTab.style.display = "block";
@@ -141,7 +143,14 @@ class App {
             var movieShowCaseButton = document.getElementById(this.state.buttonIds[1]);
             movieShowCaseButton.classList.add("disabled");
             var input = document.getElementsByTagName("input");
-            input[0].style.visibility = "visible";
+            input[0].style.display = "block";
+        }
+    }
+
+    shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
         }
     }
 }

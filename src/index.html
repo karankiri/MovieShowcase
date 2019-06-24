@@ -13,7 +13,7 @@
             <button class="tabSwtich appButton" id="searchTabButton">Search new movies</button>
 
             <select name="filter" class="appButton" id="filter">
-                <option value="0">Filter</option>
+                <option value="0">No Filter</option>
                 <option value="1">Title</option>
                 <option value="2">Year</option>
               </select>
@@ -25,7 +25,7 @@
       </header>
       <main>
         <div id="searchResults">
-
+              No movies to show
         </div>
         <div id="movieShowcase">
 
@@ -50,7 +50,7 @@
     <script id="template-movie-item" type="text/template">
       <div class="movieContainer" data-id="{{imdbID}}">
         <div class="posterContainer">
-          <img src="{{Poster}}" alt="{{Title}} Poster">
+          <img src="{{Poster}}" alt="{{Title}} Poster" title="{{Title}}">
         </div>
         <div class="textContainer">
           <div class="titleText">{{Title}}</div>
